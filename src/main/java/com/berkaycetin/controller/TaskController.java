@@ -47,7 +47,7 @@ public class TaskController {
                 @PathVariable Long id,
                 @RequestParam("file") MultipartFile file
         ) throws IOException {
-            taskService.saveTaskImage(id, file); // ✅ metod burada çağrılıyor
+            taskService.saveTaskImage(id, file); 
             return ResponseEntity.ok("Image uploaded successfully");
         }
 
@@ -66,7 +66,7 @@ public class TaskController {
         return ResponseEntity.ok(task);
     }
 
-    // 🔸 Görev sil
+  
     @DeleteMapping("tasks/{id}")
     public ResponseEntity<String> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
@@ -74,7 +74,6 @@ public class TaskController {
     }
 
 
-//göreve yorum ekleme
 
     @PostMapping("/tasks/{taskId}/comments")
     public ResponseEntity<Comment> addComment(
@@ -94,7 +93,6 @@ public class TaskController {
     }
 
 
-    // Göreve ait tüm yorumları listeleme
 
     @GetMapping("/task/{taskId}")
     public ResponseEntity<List<Comment>> getCommentsByTask(@PathVariable Long taskId) {
@@ -103,7 +101,7 @@ public class TaskController {
     }
 
 
-    //  Yorum silme
+
 
     @DeleteMapping("/{commentId}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
